@@ -2,4 +2,4 @@
 Django==1.9.3
 gunicorn==19.4.5
 
-google-python-cloud-debugger
+google-python-cloud-debugger==1.9.1
