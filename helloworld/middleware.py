@@ -1,8 +1,11 @@
 
-import logging
+import sys
 
 
 class LiveDebuggerTestMiddleware(object):
 
     def process_request(self, request):
-        logging.info("User is: {}".format(request.user))
+        a = "Aaron"
+        b = request.GET.get("name", "Madison")
+        c = "{a} {b}".format(a=a, b=b)
+        sys.stdout.write("User is: {}".format(c))
