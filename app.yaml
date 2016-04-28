@@ -1,6 +1,5 @@
 runtime: python27
 threadsafe: true
-module: auth
 
 runtime_config:
   python_version: 2
