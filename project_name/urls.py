@@ -38,4 +38,5 @@ urlpatterns = [
     url(r'^$', helloworld.views.index),
     url(r'^error$', helloworld.views.ErrorView.as_view()),
     url(r'^class$', helloworld.views.ClassView.as_view()),
+    url(r'^_ah/health$', helloworld.views.HealthCheckView.as_view()),
 ]

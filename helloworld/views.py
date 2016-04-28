@@ -33,3 +33,9 @@ class ClassView(View):
 
     def get(self, request, *args, **kwargs):
         return HttpResponse("This was a successful response")
+
+
+class HealthCheckView(View):
+
+    def get(self, request, *args, **kwargs):
+        return HttpResponse("OK")
