@@ -1,8 +1,9 @@
 FROM gcr.io/google_appengine/python
 RUN virtualenv /env -p python2.7
 
-# stackdriver logging & monitoring not necessary in flexible environment
-# to install the stackdriver logging agent and monitoring stuff
+# stackdriver logging (for error reporting)
+RUN mkdir -p /etc/google-fluentd/config.d
+ADD forward.conf /etc/google-fluentd/config.d/
 #RUN apt-get update -y && apt-get install -y apt-utils curl lsb-release
 #RUN curl -sSO https://dl.google.com/cloudagents/install-logging-agent.sh && bash install-logging-agent.sh
 

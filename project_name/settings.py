@@ -97,6 +97,19 @@ DATABASES = {
     }
 }
 
+MEMCACHED_LOCATION = "{memcache_addr}:{memcache_port}".format(
+    memcache_addr=os.environ.get('MEMCACHE_PORT_11211_TCP_ADDR', 'localhost'),
+    memcache_port=os.environ.get('MEMCACHE_PORT_11211_TCP_PORT', 11211)
+)
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'TIMEOUT': 60*15,  # 15 minutes
+        'LOCATION': MEMCACHED_LOCATION,
+    },
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -149,7 +162,7 @@ LOGGING = {
         'gcpreporting': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
-            'class': 'fluent.handler.FluentHandler',
+            'class': 'helloworld.gcp_fluent_logger.FluentdHandler',
             'tag': 'hello_world'
         },
     },
@@ -158,12 +171,12 @@ LOGGING = {
             'handlers': ['console'],
         },
         'django.request': {
-            'handlers': ['gcpreporting', 'mail_admins'],
+            'handlers': ['gcpreporting'],
             'level': 'ERROR',
             'propagate': False,
         },
         'django.security': {
-            'handlers': ['gcpreporting', 'mail_admins'],
+            'handlers': ['gcpreporting'],
             'level': 'ERROR',
             'propagate': False,
         },
