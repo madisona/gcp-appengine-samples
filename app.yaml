@@ -1,11 +1,16 @@
-runtime: custom
-vm: true
-entrypoint: gunicorn -b :$PORT project_name.wsgi
+runtime: python27
+threadsafe: true
+module: auth
+
 runtime_config:
-  python_version: 3
+  python_version: 2
 
 instance_class: F1
 
-automatic_scaling:
-  min_num_instances: 1
-  max_num_instances: 1
+
+
+
+handlers:
+- url: /.*
+  script: project_name.wsgi.application
+  secure: always
