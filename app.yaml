@@ -7,7 +7,9 @@ runtime_config:
 
 instance_class: F1
 
-
+libraries:
+- name: ssl
+  version: latest
 
 
 handlers:
