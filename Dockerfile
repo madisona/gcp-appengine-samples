@@ -1,5 +1,5 @@
 FROM gcr.io/google_appengine/python
-RUN virtualenv /env -p python3.4
+RUN virtualenv /env -p python2.7
 
 # stackdriver logging & monitoring not necessary in flexible environment
 # to install the stackdriver logging agent and monitoring stuff
