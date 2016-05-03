@@ -139,49 +139,21 @@ LOGGING = {
     'disable_existing_loggers': False,
     'filters': {
         'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse',
-        },
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
-        },
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
     },
     'handlers': {
-        'console': {
-            'level': 'INFO',
-            'filters': ['require_debug_true'],
-            'class': 'logging.StreamHandler',
-        },
-        'null': {
-            'class': 'logging.NullHandler',
-        },
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
-        },
-        'gcpreporting': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'helloworld.gcp_fluent_logger.FluentdHandler',
-            'tag': 'hello_world'
-        },
+        }
     },
     'loggers': {
-        'django': {
-            'handlers': ['console'],
-        },
         'django.request': {
-            'handlers': ['gcpreporting'],
+            'handlers': ['mail_admins'],
             'level': 'ERROR',
-            'propagate': False,
-        },
-        'django.security': {
-            'handlers': ['gcpreporting'],
-            'level': 'ERROR',
-            'propagate': False,
-        },
-        'py.warnings': {
-            'handlers': ['console'],
+            'propagate': True,
         },
     }
 }
