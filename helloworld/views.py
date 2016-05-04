@@ -17,20 +17,6 @@
 from django.http import HttpResponse
 from django.views.generic import View
 
-from fluent import sender
-from fluent import event
-import traceback
-
-sender.setup('myapp', host='localhost', port=24224)
-
-
-def report(ex):
-    data = {}
-    data['message'] = '{0}'.format(ex)
-    data['serviceContext'] = {'service' : 'myapp'}
-    # ... add more metadata
-    event.Event('errors', data)
-
 
 def index(request):
     return HttpResponse(
@@ -40,12 +26,7 @@ def index(request):
 class ErrorView(View):
 
     def get(self, request, *args, **kwargs):
-        # report exception data using:
-        try:
-            Exception("Woops.. an Error Occurred")
-        except Exception as e:
-            report(traceback.format_exc())
-            raise e
+        Exception("Woops.. an Error Occurred")
 
 
 class ClassView(View):
