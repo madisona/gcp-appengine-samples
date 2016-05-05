@@ -1,0 +1,16 @@
+runtime: python-compat
+vm: true
+api_version: 1
+threadsafe: true
+#entrypoint: gunicorn -b :$PORT project_name.wsgi
+
+instance_class: F1
+
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 1
+
+handlers:
+- url: /.*
+  script: project_name.wsgi.application
+  secure: always
