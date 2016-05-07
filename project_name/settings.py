@@ -136,3 +136,36 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+
+# http://stackoverflow.com/questions/36941184/error-reporting-with-app-engine-flexible-environment/37071628#37071628
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        }
+    },
+    'formatters': {
+        'gcp_json': {
+            '()': 'helloworld.gcp_logger.GCPJsonFormatter',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/var/log/app_engine/custom_logs/errors.json',
+            'formatter': 'gcp_json',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'filters': ['require_debug_false'],
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    },
+}
