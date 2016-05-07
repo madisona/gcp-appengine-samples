@@ -26,7 +26,7 @@ def index(request):
 class ErrorView(View):
 
     def get(self, request, *args, **kwargs):
-        Exception("Woops.. an Error Occurred")
+        raise Exception("Woops.. an Error Occurred")
 
 
 class ClassView(View):
