@@ -39,6 +39,8 @@ SECRET_KEY = 'qgw!j*bpxo7g&o1ux-(2ph818ojfj(3c#-#*_8r^8&hq5jg$3@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+# when using "Services", the host turns out to be:
+# {{GAE_MODULE_NAME}}-dot-{{GAE_APPENGINE_HOSTNAME}}
 ALLOWED_HOSTS = ['*', os.environ.get('GAE_APPENGINE_HOSTNAME', '')]
 
 
