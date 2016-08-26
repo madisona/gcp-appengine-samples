@@ -14,6 +14,8 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project_name.settings")
 
 try:
+  # at the moment, cloud debugger not supported for Python 3
+  # https://cloud.google.com/debugger/docs/setting-up-python-on-app-engine
   import googleclouddebugger
   googleclouddebugger.AttachDebugger(
       version=os.environ.get('GAE_MODULE_VERSION', ''),

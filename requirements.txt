@@ -1,5 +1,4 @@
 
-Django==1.9.3
-gunicorn==19.4.5
-mysql-python
-google-python-cloud-debugger
+Django==1.8.14
+gunicorn==19.6.0
+mysqlclient
