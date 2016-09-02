@@ -1,4 +1,11 @@
+sudo: false
 language: python
+
+env:
+- PATH=$PATH:$HOME/gcloud/google-cloud-sdk/bin PYTHONPATH=${HOME}/gcloud/google-cloud-sdk/platform/google_appengine
+
+before_install:
+- openssl aes-256-cbc -K $encrypted_8a7b6a03999a_key -iv $encrypted_8a7b6a03999a_iv -in client-secret.json.enc -out client-secret.json -d
 
 install:
 - pip install -r requirements.txt
@@ -11,7 +18,3 @@ deploy:
   keyfile: client-secret.json
   project: imtapps-testing-stuff
   on: travis-deploy
-
-before_install:
-- openssl aes-256-cbc -K $encrypted_8a7b6a03999a_key -iv $encrypted_8a7b6a03999a_iv
-  -in client-secret.json.enc -out ~\/Downloads/client-secret.json -d
