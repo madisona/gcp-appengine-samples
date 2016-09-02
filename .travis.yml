@@ -1,0 +1,16 @@
+language: python
+install:
+- pip install -r requirements.txt
+
+script:
+- python manage.py test --settings=project_name.test_settings
+
+deploy:
+  provider: gae
+  keyfile: client-secret.json
+  project: imtapps-testing-stuff
+  on: travis-deploy
+
+env:
+  global:
+    secure: k1C1srMMGBebNoCpoq4ykx1h0bcfooru9UJQWxaQScPv3g2FE6vRAReS6V/BMyG+8VD3tlRyJrA5u0p7+1mlAYGxuWp97c7I+cXt5vmR581Pgnc0tvq6sSSFYlAJhEL8vQ5+VSqnKInhP0Nzl5zVF5tRLEnfCbgqTERZNUcDdegW0gr8TT4HALCi5D1TfcwijJi5+aJ/1nzx+3jLSLY14LT/RSU558EonRIjHV/XzYhCUUxT+E5VYUh5J5Ax445aVGkp4M/tILXQ7A1fvdZr0agOZiZOQPmMKtoYxQ+4rgrVsqO1IJj4XopPY+S036RJlrLoXcFOsGPp6tzzgkScscRpofqniWNWpNCirT9DNO/WT3lZreHC5rb21pfkCllprJTnvbArO8qtha+QypJC+Me2si7cQXlTYU0+rNhNlvVyfsIURvRaxfuLylkZs4SnAkUmhIrAjlpM7bifYT4e/FOVhtholE6u2we6BozHIMfl6HdRKEyARwSiGaNXXgBiFadHYoopLGDU4vhGb858xQi3dT1it+2IdqN4/ikaPyzPj5sxckA25TuFtONg42gywS1KRy10LNtmWPgTOBv3K6/qRHHm4rfYaJu272B+cCZV01sYO00LP5lw7lKCvlPDPVJpoi81NtfyUIA8CL6vp13s8WCyJkI3yoKA3zI6+RY=
