@@ -35,8 +35,8 @@ import helloworld.views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', helloworld.views.index),
-    url(r'^error$', helloworld.views.ErrorView.as_view()),
-    url(r'^class$', helloworld.views.ClassView.as_view()),
-    url(r'^_ah/health$', helloworld.views.HealthCheckView.as_view()),
+    url(r'^$', helloworld.views.index, name="index"),
+    url(r'^error$', helloworld.views.ErrorView.as_view(), name="error"),
+    url(r'^class$', helloworld.views.ClassView.as_view(), name="class"),
+    url(r'^_ah/health$', helloworld.views.HealthCheckView.as_view(), name="health_check"),
 ]

@@ -3,3 +3,4 @@ Django==1.9.3
 gunicorn==19.4.5
 mysql-python
 google-python-cloud-debugger
+python-memcached
