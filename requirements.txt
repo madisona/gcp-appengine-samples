@@ -1,5 +1,5 @@
 
 Django==1.9.3
-gunicorn==19.4.5
+gunicorn==19.7.1
 mysql-python
 google-python-cloud-debugger
